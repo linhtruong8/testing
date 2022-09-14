@@ -12,8 +12,6 @@ phases:
 
   pre_build:
     commands:
-      # provisions a CloudFormation stack
-      - cdk bootstrap
       # confirm CloudFormation template is generated successfully
       - cdk synth
       # create resources
