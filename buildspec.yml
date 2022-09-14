@@ -10,15 +10,6 @@ phases:
       - npm i -g eslint
       - npm i -g typescript aws-cdk
 
-  pre_build:
-    commands:
-      # provisions a CloudFormation stack
-      - cdk bootstrap
-      # confirm CloudFormation template is generated successfully
-      - cdk synth
-      # create resources
-      - cdk deploy
-
   build:
     commands:
       - echo "Building React project..."
