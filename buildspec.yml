@@ -10,6 +10,15 @@ phases:
       - npm i -g eslint
       - npm i -g typescript aws-cdk
 
+  pre_build:
+    commands:
+      # provisions a CloudFormation stack
+      - cdk bootstrap
+      # confirm CloudFormation template is generated successfully
+      - cdk synth
+      # create resources
+      - cdk deploy
+
   build:
     commands:
       - echo "Building React project..."
@@ -18,4 +27,4 @@ phases:
   post_build:
     commands:
       - echo "Updating files in the S3 bucket..."
-      - aws s3 sync build/ s3://icon_leaderboard_backend/
+      - aws s3 sync build/ s3://backend-icon-bucket-test/
